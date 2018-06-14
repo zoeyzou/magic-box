@@ -1,0 +1,109 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Eater|Oswald" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  
+</head>
+<body>
+  <header>
+      <img src="img/magicbox.png" alt="magic box" class="header-img">
+      <h1>Your magic box</h1>
+      <p>In this magic box, you will get: </p>
+      <ul class="list">
+        <li><i class="fas fa-check"></i> Your current age;</li>
+        <li><i class="fas fa-check"></i> Your rest supply of your favorite food;</li>
+        <li><i class="fas fa-check"></i> The circumference of a circle;</li>
+        <li><i class="fas fa-check"></i> The total area of a circle;</li>
+        <li><i class="fas fa-check"></i> The temperature converter from celcius to fahrenheit and vice verse.</li>
+      </ul>
+      <button type="button" id="display-form-button">Ready? Go!</button>
+  </header>
+
+  <main id="main-content">
+    
+    <form id="form-1">
+      <fieldset>
+        <legend><h2>Supply Calculator</h2></legend>
+        <div class="wrapper" id="age-section">
+          <img src="img/birthday.png" alt="birthday cake photo">
+          <p>Please enter your birthday, your favorite food and your expected lifespan below.</p>
+          <label for="birthday"> 
+            <span>Your birthday: </span>
+            <input id="birthday" name="birthday" type="date" value="1991-01-17">
+          </label>
+          <label for="fav-food"> 
+            <span>Favorite food: </span> 
+            <input id="fav-food" name="fav-food" type="text" placeholder="Please input your favorite food">
+          </label>
+          <label for="daily-amount"> 
+            <span>Daily supply/need: </span> 
+            <input id="daily-amount" name="daily-amount" type="number" placeholder="Please input your daily need for it">
+          </label>
+          <label for="lifespan"> 
+            <span>Your expected lifespan: </span> 
+            <input id="lifespan" name="lifespan" type="number" value="90" placeholder="please input a number">
+          </label>
+          <button type="button" id="birthday-button" form="form-1">Launch the Magic Box</button>
+        </div>
+      </fieldset>
+    </form>
+    
+    <form>
+      <fieldset>
+        <legend><h2>Circle's myth Calculator</h2></legend>
+        <div class="wrapper" id="circle-section">
+          <img src="img/radius.svg" alt="radius indication in a image">
+          <p>Here you get to know everything about circles.</p>
+          <label>
+            <span>Radius for the circle (unit: cm): </span>
+            <input id="radius" name="radius" type="number" min=0 placeholder="please input the radius in cm">
+          </label>
+          <button type="button" id="circle-button">Launch the Magic Box</button>
+        </div>
+      </fieldset>
+    </form>
+
+    <form>
+      <fieldset>
+        <legend><h2>Temperature Converter</h2></legend>
+        <div class="wrapper">
+          <img src="img/temperature.png" alt="temperature measure photo">
+          <p>You'll be the expert in both types of temperature units: celsius and fahrenheit.</p>
+          <div class="wrapper" id="c-f-section">
+            <label for="c-f">
+              <span>Celsius to Fahrenheit: </span>
+              <input id="c-f" name="c-f" type="number" placeholder="Please input a celsius value.">
+            </label>
+            <button type="button" id="c-f-button">Launch the Magic Box</button>
+          </div>
+          <div class="wrapper" id="f-c-section">
+            <label for="f-c">
+              <span>Fahrenheit to Celsius: </span>
+              <input id="c-f" name="c-f" type="number" placeholder="Please input a fahrenheit value.">
+            </label>
+            <button type="button" id="f-c-button">Launch the Magic Box</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer>
+    <ul class="social-media">
+      <li><a href="www.linkedin.com/in/zoeyzou2018"><i class="fab fa-linkedin"></i></a></li>
+      <li><a href="https://github.com/zoeyzou"><i class="fab fa-github-square"></i></a></li>
+      <li><a href="https://www.facebook.com/zoey.chow.35"><i class="fab fa-facebook-square"></i></a></li>
+      <li><a href="https://twitter.com/ZoeyZ13?ref_src=twsrc%5Etfw" data-show-screen-name="false" data-show-count="false"><i class="fab fa-twitter-square"></i></a></li>
+    </ul>
+    <div class="footer-text">All rights reserved by <a href="#">Zoey Zou</a></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
