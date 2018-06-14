@@ -10,15 +10,15 @@
 /*
  function variables
  */
-  const promptInput = "Please input all required data in this module to get result.";
+  const promptInput = "Please input all required data in proper form to get result.";
 
 /*
   TASK 1: THE AGE CALCULATOR
   */
   function calculateAge(birthday) {
-    const today = new Date(); //method to get current date
+    const today = new Date();
     const birthDate = new Date(birthday);
-    const years = today.getFullYear() - birthDate.getFullYear();
+    let years = today.getFullYear() - birthDate.getFullYear();
     
     // Reset birthday to the current year.  
     birthDate.setFullYear(today.getFullYear()); 
@@ -27,7 +27,7 @@
     if (today < birthDate)  
       years--; 
 
-    return years; //this is the final age
+    return years;
   }
 
 /*
@@ -43,27 +43,26 @@
   TASK 3: THE GEOMETRIZER
   */
   function calcCircumference(radius) {
-    let result = (2 * Math.PI * radius).toFixed(2); //Use C =  2 * PI * r equation and fix the decimal
+    let result = (2 * Math.PI * radius); //Use C =  2 * PI * r equation and fix the decimal
     return result;
   }
 
   function calcArea(radius) {
-    let result = (Math.PI * radius * radius).toFixed(2); //Use a =  PI * r * r equation and fix the decimal
+    let result = (Math.PI * radius * radius); //Use a =  PI * r * r equation and fix the decimal
     return result;
   }
 
 /* 
   TASK 4: THE TEMPERATURE CONVERTER
   */
-
   function celsiusToFahrenheit(celsius) {
     let result = celsius * 9 / 5 + 32;
-    return console.log(`${celsius}°C is ${result}°F`);
+    return result;
   }
 
   function fahrenheitToCelsius(fahrenheit) {
     let result = (fahrenheit - 32) * 5 / 9;
-    return console.log(`${fahrenheit}°C is ${result}°F`);
+    return result;
   }
 
 /*
@@ -104,7 +103,7 @@
   displayFormButton.addEventListener("click", () => {
     const mainContent = document.getElementById("main-content"); //Note for myself: if this is put outside, next event listener would cause issue that the page just jumped back to initial state. why?
     displayContent(mainContent);
-  }); //click event to display form
+  });
 
   birthdayButton.addEventListener("click", () => {
     const parentEl = document.querySelector("#age-section");
@@ -123,9 +122,13 @@
         showTextInDOM(parentEl, text); //filter edge case related to age
       }
       else if (maxAge > 100 || maxAge < 60) {
-        text = 'I honestly think your expectation of your lifespan is rather bizzar.';
+        text = 'I honestly think your expectation of your lifespan is rather bizarre.';
         showTextInDOM(parentEl, text); 
       } //filter edge case related to max age
+      else if (dailyAmount < 0) {
+        text = 'That\'s not how the world works human.';
+        showTextInDOM(parentEl, text);
+      } // filter invalid input of daily amount
       else if (favFood == '' || dailyAmount == '') {
         showTextInDOM(parentEl, promptInput); 
       } //filter empty fields
@@ -141,14 +144,14 @@
     deleteTextArea(parentEl); //check and delete if any existing text div
 
     const radius = document.getElementById("radius").value;
-    const circumference = calcCircumference(radius);
-    const area = calcArea(radius);
+    const circumference = calcCircumference(radius).toFixed(2);
+    const area = calcArea(radius).toFixed(2);
     let text;
 
     if (radius == '') {
       showTextInDOM(parentEl, promptInput); 
     } //filter empty field
-    else if (radius < 0 || radius > 500) {
+    else if (radius <= 0 || radius > 999999999) {
       text = 'Your number has overwhelmed me, please give a reasonable one.';
       showTextInDOM(parentEl, text);
     } //filter extreme values
@@ -163,14 +166,18 @@
     deleteTextArea(parentEl); //check and delete if any existing text div
 
     const celsiusValue = document.getElementById("c-f").value;
-    const fahrenheitValue = celsiusToFahrenheit(celsiusValue);
+    const fahrenheitValue = celsiusToFahrenheit(celsiusValue).toFixed(2);
     let text;
 
     if (celsiusValue == '') {
       showTextInDOM(parentEl, promptInput); 
     } //filter empty field
+    else if (celsiusValue < -273.15) {
+      text = "Hey, Kelvin says that's too cold for the universe.";
+      showTextInDOM(parentEl, text);
+    }
     else {
-      text = `${celsiusValue} celsius degree equals to ${fahrenheitValue}.`;
+      text = `${celsiusValue} celsius degree(s) equals to ${fahrenheitValue} fahrenheit degree(s).`;
       showTextInDOM(parentEl, text);
     } //get the right result
   });
@@ -179,15 +186,19 @@
     const parentEl = document.getElementById("f-c-section");
     deleteTextArea(parentEl); //check and delete if any existing text div
 
-    const fahrenheitValue = document.getElementById("c-f").value;
-    const celsiusValue = celsiusToFahrenheit(fahrenheitValue);
+    const fahrenheitValue = document.getElementById("f-c").value;
+    const celsiusValue = fahrenheitToCelsius(fahrenheitValue).toFixed(2);
     let text;
 
     if (fahrenheitValue == '') {
       showTextInDOM(parentEl, promptInput); 
     } //filter empty field
+    else if (fahrenheitValue < -459.67) {
+      text = "Hey, Kelvin says that's too cold for the universe.";
+      showTextInDOM(parentEl, text);
+    }
     else {
-      text = `${fahrenheitValue} celsius degree equals to ${celsiusValue}.`;
+      text = `${fahrenheitValue} fahrenheit degree(s) equals to ${celsiusValue} celsius degree(s).`;
       showTextInDOM(parentEl, text);
     } //get the right result
   });
