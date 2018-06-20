@@ -7,6 +7,8 @@
   const cToFButton = document.getElementById("c-f-button");
   const fToCButton = document.getElementById("f-c-button");
 
+  const mainContent = document.getElementById("main-content"); //Note for myself: if this is put outside, next event listener would cause issue that the page just jumped back to initial state. why?
+
 /*
  function variables
  */
@@ -101,7 +103,7 @@
   click events
   */
   displayFormButton.addEventListener("click", () => {
-    const mainContent = document.getElementById("main-content"); //Note for myself: if this is put outside, next event listener would cause issue that the page just jumped back to initial state. why?
+
     displayContent(mainContent);
   });
 
@@ -156,7 +158,7 @@
       showTextInDOM(parentEl, text);
     } //filter extreme values
     else {
-      text = `This circle has ${circumference} of circumferent and ${area} of area.`;
+      text = `This circle has ${circumference} of circumference and ${area} of area.`;
       showTextInDOM(parentEl, text);
     } //get the right result
   });
